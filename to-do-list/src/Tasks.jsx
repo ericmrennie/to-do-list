@@ -14,7 +14,12 @@ export default function Tasks() {
         }
     };
 
-
+    const toggleTask = (index) => {
+        const newTasks = tasks.map((task, i) => 
+            i === index ? {...task, completed : !task.completed } : task
+        );
+        setTasks(newTasks);
+    };
 
     return(
         <div className="app">
@@ -34,8 +39,8 @@ export default function Tasks() {
             </div>
             <ul>
                 {tasks.map((task, index) => (
-                    <li key={index}>
-                        <span>{task.text}</span>
+                    <li key={index} className={`task ${task.completed ? "task completed" : "task"}`}>
+                        <span onClick={() => toggleTask(index)}>{task.text}</span>
                     </li>
                 ))}
             </ul>
