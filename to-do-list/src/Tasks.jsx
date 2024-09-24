@@ -21,6 +21,11 @@ export default function Tasks() {
         setTasks(newTasks);
     };
 
+    const deleteTask = (index) => {
+        const newTasks = tasks.filter((_, i) => i !== index);
+        setTasks(newTasks);
+    };
+
     return(
         <div className="app">
             <header className="header">
@@ -41,9 +46,10 @@ export default function Tasks() {
                 {tasks.map((task, index) => (
                     <li key={index} className={`task ${task.completed ? "task completed" : "task"}`}>
                         <span onClick={() => toggleTask(index)}>{task.text}</span>
+                        <button onClick={() => deleteTask(index)}>Delete</button>
                     </li>
                 ))}
             </ul>
         </div>
-    )
+    );
 }
