@@ -33,7 +33,11 @@ export default function Tasks() {
                 <button onClick={addTask}>Add</button>
             </div>
             <ul>
-                {tasks.map((task, index) => )}
+                {tasks.map((task, index) => (
+                    <li key={index}>
+                        <span>{task.text}</span>
+                    </li>
+                ))}
             </ul>
         </div>
     )
